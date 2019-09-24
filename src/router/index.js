@@ -56,6 +56,45 @@ export const constantRoutes = [
   },
 
   {
+    path: '/12',
+    component: Layout,
+    redirect: '/dashboard',
+    name: '权限管理',
+    children: [{
+      path: 'dashboard',
+      name: '权限管理',
+      component: () => import('@/views/dashboard/index'),
+      meta: { title: '权限管理', icon: 'dashboard' }
+    }]
+  },
+
+  {
+    path: '/123',
+    component: Layout,
+    redirect: '/dashboard',
+    name: '文章管理',
+    children: [{
+      path: 'dashboard',
+      name: '文章管理',
+      component: () => import('@/views/dashboard/index'),
+      meta: { title: '文章管理', icon: 'dashboard' }
+    }]
+  },
+
+  {
+    path: '/124',
+    component: Layout,
+    redirect: '/dashboard',
+    name: '用户管理',
+    children: [{
+      path: 'dashboard',
+      name: '用户管理',
+      component: () => import('@/views/dashboard/index'),
+      meta: { title: '用户管理', icon: 'dashboard' }
+    }]
+  },
+
+  {
     path: '/example',
     component: Layout,
     redirect: '/example/table',
