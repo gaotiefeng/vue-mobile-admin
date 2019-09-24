@@ -1,0 +1,25 @@
+import request from '@/utils/request'
+
+export function login(query) {
+  console.log(query)
+  return request({
+    url: '/user/login',
+    method: 'post',
+    data:  query 
+  })
+}
+
+export function getInfo(token) {
+  return request({
+    url: '/user/info',
+    method: 'get',
+    params: { token }
+  })
+}
+
+export function logout() {
+  return request({
+    url: '/user/logout',
+    method: 'post'
+  })
+}
