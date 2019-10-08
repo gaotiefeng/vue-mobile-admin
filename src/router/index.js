@@ -56,7 +56,7 @@ export const constantRoutes = [
   },
 
   {
-    path: '/',
+    path: '',
     component: Layout,
     redirect: '/admin/index',
     name: '权限管理',
@@ -73,6 +73,12 @@ export const constantRoutes = [
         name: '角色管理',
         component: () => import('@/views/role/index'),
         meta: { title: '角色管理', icon: 'tree' }
+      },
+      {
+        path: 'route/index',
+        name: '路由管理',
+        component: () => import('@/views/route/index'),
+        meta: { title: '路由管理', icon: 'tree' }
       }
     ]
   },

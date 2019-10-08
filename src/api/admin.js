@@ -1,12 +1,9 @@
 import request from '@/utils/request'
 
-/**
- * @param {*} query 
- */
-export function index(query) {
+export function getList(query) {
   return request({
-    url: '/admin/index',
+    url: 'admin/index',
     method: 'get',
-    params: query,
+    params: query
   })
 }
