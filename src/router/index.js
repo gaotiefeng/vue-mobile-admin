@@ -56,16 +56,25 @@ export const constantRoutes = [
   },
 
   {
-    path: '/12',
+    path: '/',
     component: Layout,
-    redirect: '/dashboard',
+    redirect: '/admin/index',
     name: '权限管理',
-    children: [{
-      path: 'dashboard',
-      name: '权限管理',
-      component: () => import('@/views/dashboard/index'),
-      meta: { title: '权限管理', icon: 'dashboard' }
-    }]
+    meta: { title: '权限管理', icon: 'example' },
+    children: [
+      {
+        path: 'admin/index',
+        name: '管理员列表',
+        component: () => import('@/views/admin/index'),
+        meta: { title: '管理员列表', icon: 'table' }
+      },
+      {
+        path: 'role/index',
+        name: '角色管理',
+        component: () => import('@/views/role/index'),
+        meta: { title: '角色管理', icon: 'tree' }
+      }
+    ]
   },
 
   {
