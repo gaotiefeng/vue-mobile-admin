@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { getList } from '@/api/admin'
+import { getList,del } from '@/api/admin'
 import * as error from '@/utils/error'
 export default {
     data() {
@@ -78,8 +78,33 @@ export default {
         });
         this.admin();
         },
-        del(id) {
-          alert(id);
+        async del(id) {
+
+          let query = {
+            'id' : id
+          }
+          this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+          }).then(() => {
+           del(query).then(result => {
+           if(result.code == error.SUCCESS_CODE)
+            {
+              this.$message({
+              type: 'success',
+              message: '删除成功!'
+              });
+            }
+            this.admin();
+           })
+          
+          }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });          
+        });
         },
     },
 }

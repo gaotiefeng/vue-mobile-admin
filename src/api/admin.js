@@ -7,3 +7,11 @@ export function getList(query) {
     params: query
   })
 }
+
+export function del(query) {
+  return request({
+    url: 'admin/delete',
+    method: 'post',
+    data: query
+  })
+}
