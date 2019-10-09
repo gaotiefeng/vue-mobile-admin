@@ -4,15 +4,26 @@
       :data="list"
       style="width: 100%">
       <el-table-column
-        prop="username"
-        label="名称"
+        prop="id"
+        label="文章编号"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="mobile"
-        label="手机号"
+        prop="title"
+        label="标题"
         width="180">
       </el-table-column>
+      <el-table-column
+        prop="content"
+        label="内容"
+        width="180">
+      </el-table-column>
+      <el-table-column
+        prop="user.mobile"
+        label="用户"
+        width="180">
+      </el-table-column>
+
       <el-table-column
         prop="created_at"
         label="创建时间">
@@ -45,7 +56,7 @@
 </template>
 
 <script>
-import { getList,del } from '@/api/admin'
+import { getList,del } from '@/api/article'
 import * as error from '@/utils/error'
 export default {
 data() {
