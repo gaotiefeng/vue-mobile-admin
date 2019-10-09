@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-export function route(query) {
+export function getList(query) {
   return request({
     url: '/route/index',
     methods: 'get',
@@ -8,3 +8,10 @@ export function route(query) {
   })
 }
 
+export function del(query) {
+  return request({
+    url: '/route/delete',
+    methods: 'post',
+    params: query
+  })
+}

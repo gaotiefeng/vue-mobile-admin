@@ -4,13 +4,13 @@
       :data="list"
       style="width: 100%">
       <el-table-column
-        prop="username"
-        label="名称"
+        prop="name"
+        label="路由名称"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="mobile"
-        label="手机号"
+        prop="route"
+        label="路由"
         width="180">
       </el-table-column>
       <el-table-column
@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { getList,del } from '@/api/admin'
+import { getList,del } from '@/api/route'
 import * as error from '@/utils/error'
 export default {
 data() {

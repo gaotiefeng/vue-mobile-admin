@@ -4,15 +4,11 @@
       :data="list"
       style="width: 100%">
       <el-table-column
-        prop="username"
-        label="名称"
+        prop="name"
+        label="角色名称"
         width="180">
       </el-table-column>
-      <el-table-column
-        prop="mobile"
-        label="手机号"
-        width="180">
-      </el-table-column>
+
       <el-table-column
         prop="created_at"
         label="创建时间">
@@ -45,7 +41,7 @@
 </template>
 
 <script>
-import { getList,del } from '@/api/admin'
+import { getList,del } from '@/api/role'
 import * as error from '@/utils/error'
 export default {
 data() {
