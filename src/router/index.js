@@ -84,28 +84,28 @@ export const constantRoutes = [
   },
 
   {
-    path: '/123',
+    path: '',
     component: Layout,
-    redirect: '/dashboard',
+    redirect: '/article/index',
     name: '文章管理',
     children: [{
-      path: 'dashboard',
+      path: 'article/index',
       name: '文章管理',
-      component: () => import('@/views/dashboard/index'),
+      component: () => import('@/views/article/index'),
       meta: { title: '文章管理', icon: 'dashboard' }
     }]
   },
 
   {
-    path: '/124',
+    path: '',
     component: Layout,
-    redirect: '/dashboard',
+    redirect: '/user/index',
     name: '用户管理',
     children: [{
-      path: 'dashboard',
+      path: '/user/index',
       name: '用户管理',
-      component: () => import('@/views/dashboard/index'),
-      meta: { title: '用户管理', icon: 'dashboard' }
+      component: () => import('@/views/user/index'),
+      meta: { title: '用户管理', icon: 'user' }
     }]
   },
 

@@ -1,11 +1,10 @@
 import request from '@/utils/request'
 
 export function login(query) {
-  console.log(query)
   return request({
     url: '/user/login',
     method: 'post',
-    data:  query 
+    data:  query  
   })
 }
 
