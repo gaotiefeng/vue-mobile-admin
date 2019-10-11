@@ -27,6 +27,11 @@
         width="180">
       </el-table-column>
       <el-table-column
+        prop="icon"
+        label="图标"
+        width="180">
+      </el-table-column>
+      <el-table-column
         prop="created_at"
         label="创建时间">
       </el-table-column>
@@ -138,5 +143,4 @@ methods: {
   margin-left:-94%;
   margin-bottom:20px;
 }
-
 </style>

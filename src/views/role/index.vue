@@ -1,5 +1,18 @@
 <template>
     <div class="admin">
+      <div class="search">
+      <el-row>
+        <el-form ref="search" :model="search" label-width="80px">
+          角色名称:
+          <el-input v-model="search.name" clearable placeholder="请输入名称" style="width:300px;margin-bottom:10px;"/>
+          <el-button type="primary" @click="submitForm()">搜索</el-button>
+        </el-form>
+      </el-row>
+      <br />
+      </div>
+      <div class="add">
+       <el-button type="success">添加角色</el-button>
+      </div>
       <el-table
       :data="list"
       style="width: 100%">
@@ -56,10 +69,10 @@ data() {
     }
   },
 created() {
-    this.admin();
+    this.role();
 },
 methods: {
-    async admin(){
+    async role(){
         const query = this.search;
         let res = await getList(query);
         if(res.code == error.SUCCESS_CODE) {
@@ -72,10 +85,12 @@ methods: {
     Object.assign(this.search, {
         offset: (currentPage - 1) * this.search.limit
     });
-    this.admin();
+    this.role();
+    },
+    submitForm() {
+      this.role();
     },
     async del(id) {
-
       let query = {
         'id' : id
       }
@@ -92,7 +107,7 @@ methods: {
           message: '删除成功!'
           });
         }
-        this.admin();
+        this.role();
         })
       
       }).catch(() => {
@@ -110,5 +125,12 @@ methods: {
   margin-left: 40px;
   text-align: center;
 }
-
+.search {
+  color:chocolate;
+  margin-top:30px;
+}
+.add {
+  margin-left:-94%;
+  margin-bottom:20px;
+}
 </style>

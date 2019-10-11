@@ -1,5 +1,18 @@
 <template>
     <div class="admin">
+      <div class="search">
+      <el-row>
+        <el-form ref="search" :model="search" label-width="80px">
+          名称:
+          <el-input v-model="search.name" clearable placeholder="请输入名称" style="width:300px;margin-bottom:10px;"/>
+          <el-button type="primary" @click="submitForm()">搜索</el-button>
+        </el-form>
+      </el-row>
+      <br />
+      </div>
+      <div class="add">
+       <el-button type="success">添加管理员</el-button>
+      </div>
       <el-table
       :data="list"
       style="width: 100%">
@@ -78,8 +91,10 @@ methods: {
     });
     this.admin();
     },
+    submitForm() {
+      this.admin();
+    },
     async del(id) {
-
       let query = {
         'id' : id
       }
@@ -114,5 +129,12 @@ methods: {
   margin-left: 40px;
   text-align: center;
 }
-
+.search {
+  color:chocolate;
+  margin-top:30px;
+}
+.add {
+  margin-left:-94%;
+  margin-bottom:20px;
+}
 </style>
