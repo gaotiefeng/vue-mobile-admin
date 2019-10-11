@@ -2,6 +2,7 @@ import axios from 'axios'
 import { MessageBox, Message } from 'element-ui'
 import store from '@/store'
 import { getToken } from '@/utils/auth'
+import Qs from 'qs'
 
 // create an axios instance
 const service = axios.create({
@@ -21,6 +22,9 @@ service.interceptors.request.use(
       // please modify it according to the actual situation
       config.headers['X-Token'] = getToken()
     }
+    // if (config.method === 'post' && typeof config.data === 'string') {
+    //   config.data = Qs.stringify(config.data)
+    // }
     return config
   },
   error => {

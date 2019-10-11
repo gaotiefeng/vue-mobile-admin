@@ -10,8 +10,8 @@ export function getList(query) {
 
 export function del(query) {
   return request({
-    url: '/route/delete',
-    methods: 'post',
-    params: query
+    url: 'route/delete',
+    method: 'post',
+    data: query
   })
 }

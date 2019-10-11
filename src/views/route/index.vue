@@ -74,10 +74,10 @@ data() {
     }
   },
 created() {
-    this.admin();
+    this.getList();
 },
 methods: {
-    async admin(){
+    async getList(){
         const query = this.search;
         let res = await getList(query);
         if(res.code == error.SUCCESS_CODE) {
@@ -90,10 +90,10 @@ methods: {
     Object.assign(this.search, {
         offset: (currentPage - 1) * this.search.limit
     });
-    this.admin();
+    this.getList();
     },
     submitForm() {
-      this.admin();
+      this.getList();
     },
     async del(id) {
       let query = {
@@ -112,7 +112,7 @@ methods: {
           message: '删除成功!'
           });
         }
-        this.admin();
+        this.getList();
         })
       
       }).catch(() => {
