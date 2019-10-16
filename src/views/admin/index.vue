@@ -11,11 +11,19 @@
       <br />
       </div>
       <div class="add">
-       <el-button type="success">添加管理员</el-button>
+       <el-button type="success" icon="el-icon-document">添加管理员</el-button>
+       <el-button :loading="downloadLoading" type="primary" icon="el-icon-document" @click="handleDownload">
+        Export Excel
+      </el-button>
       </div>
       <el-table
       :data="list"
       style="width: 100%">
+      <el-table-column
+        prop="id"
+        label="Id"
+        width="180">
+      </el-table-column>
       <el-table-column
         prop="username"
         label="名称"
@@ -63,6 +71,10 @@ import * as error from '@/utils/error'
 export default {
 data() {
     return {
+      downloadLoading: false,
+      filename: 'admin-list',
+      autoWidth: true,
+      bookType: 'xlsx',
       list: [],
       total: 1,
       page: 1,
@@ -121,6 +133,32 @@ methods: {
       });          
     });
     },
+    handleDownload() {
+      this.downloadLoading = true
+      import('@/vendor/Export2Excel').then(excel => {
+        const tHeader = ['Id', '名称', '手机号r', '创建时间']
+        const filterVal = ['id', 'username', 'mobile', 'created_at']
+        const list = this.list
+        const data = this.formatJson(filterVal, list)
+        excel.export_json_to_excel({
+          header: tHeader,
+          data,
+          filename: this.filename,
+          autoWidth: this.autoWidth,
+          bookType: this.bookType
+        })
+        this.downloadLoading = false
+      })
+    },
+    formatJson(filterVal, jsonData) {
+      return jsonData.map(v => filterVal.map(j => {
+        if (j === 'timestamp') {
+          return parseTime(v[j])
+        } else {
+          return v[j]
+        }
+      }))
+    }
 }
 }
 </script> 
@@ -134,7 +172,7 @@ methods: {
   margin-top:30px;
 }
 .add {
-  margin-left:-94%;
+  margin-left:-66%;
   margin-bottom:20px;
 }
 </style>
