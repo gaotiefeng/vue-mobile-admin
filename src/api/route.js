@@ -8,6 +8,14 @@ export function getList(query) {
   })
 }
 
+export function add(query) {
+  return request({
+    url: '/route/save',
+    method: 'post',
+    data: query
+  })
+}
+
 export function del(query) {
   return request({
     url: 'route/delete',

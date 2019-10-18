@@ -11,7 +11,9 @@
       <br />
       </div>
       <div class="add">
-       <el-button type="success">添加路由</el-button>
+       <router-link to="/route/add">
+       <el-button type="success" >添加路由</el-button>
+       </router-link>
       </div>
       <el-table
       :data="list"

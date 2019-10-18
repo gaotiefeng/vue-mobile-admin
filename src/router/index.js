@@ -79,6 +79,11 @@ export const constantRoutes = [
         name: '路由管理',
         component: () => import('@/views/route/index'),
         meta: { title: '路由管理', icon: 'tree' }
+      },{
+        path: 'route/add',
+        name: '添加路由',
+        component: () => import('@/views/route/add'),
+        hidden: true,
       }
     ]
   },
