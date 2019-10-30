@@ -11,7 +11,9 @@
       <br />
       </div>
       <div class="add">
+        <router-link to="/admin/add">
        <el-button type="success" icon="el-icon-document">添加管理员</el-button>
+        </router-link>
        <el-button :loading="downloadLoading" type="primary" icon="el-icon-document" @click="handleDownload">
         Export Excel
       </el-button>

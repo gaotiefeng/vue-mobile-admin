@@ -11,7 +11,9 @@
       <br />
       </div>
       <div class="add">
+        <router-link to="/role/add">
        <el-button type="success">添加角色</el-button>
+        </router-link>
       </div>
       <el-table
       :data="list"

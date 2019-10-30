@@ -69,10 +69,21 @@ export const constantRoutes = [
         meta: { title: '管理员列表', icon: 'table' }
       },
       {
+        path: 'admin/add',
+        name: '添加管理员',
+        component: () => import('@/views/admin/add'),
+        hidden: true,
+      },
+      {
         path: 'role/index',
         name: '角色管理',
         component: () => import('@/views/role/index'),
         meta: { title: '角色管理', icon: 'user' }
+      },{
+        path: 'role/add',
+        name: '添加角色',
+        component: () => import('@/views/role/add'),
+        hidden: true,
       },
       {
         path: 'route/index',

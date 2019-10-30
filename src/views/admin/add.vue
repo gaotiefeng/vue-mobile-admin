@@ -1,28 +1,26 @@
 <template>
 <div class="body">
-    <h3>添加路由</h3>
+    <h3>添加管理员</h3>
 
     <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-    <el-form-item label="路由名称" prop="name">
-        <el-input v-model="form.name" placeholder="列如：添加路由"></el-input>
+    <el-form-item label="管理员名称" prop="user_name">
+        <el-input v-model="form.user_name" placeholder="列如：admin"></el-input>
     </el-form-item>
-    <el-form-item label="请求方法" prop="method">
-         <el-input v-model="form.method" placeholder="列如：get|post"></el-input>
+    <el-form-item label="角色名称" prop="role_id">
+         <el-select v-model="form.role_id" placeholder="请选择">
+            <el-option
+            v-for="item in options"
+            :key="item.id"
+            :label="item.name"
+            :value="item.id">
+            </el-option>
+        </el-select>
     </el-form-item>
-    <el-form-item label="图标">
-       <el-input v-model="form.icon" placeholder="列如：people"></el-input>
+    <el-form-item label="手机号">
+       <el-input v-model="form.mobile" placeholder="列如：15988886666"></el-input>
     </el-form-item>
-    <el-form-item label="显示">
-        <el-switch
-        style="display: block"
-        v-model="form.is_read"
-        active-color="#13ce66"
-        active-text="是否显示">
-        </el-switch>
-    </el-form-item>
-
-    <el-form-item label="路由" prop="route">
-       <el-input v-model="form.route" placeholder="列如：/route/add"></el-input>
+    <el-form-item label="密码">
+       <el-input type="password" v-model="form.password" placeholder="列如：123456"></el-input>
     </el-form-item>
     <el-form-item>
         <el-button type="primary" @click="onSubmit('form')">立即创建</el-button>
@@ -33,39 +31,55 @@
 </template>
 
 <script>
-import { add } from '@/api/route'
+import { all } from '@/api/role'
+import { add } from '@/api/admin'
 import * as error from '@/utils/error'
 export default({
     data() {
       return {
+        options:[],
         form: {
-          name: '',
-          method: '',
-          icon: '',
-          is_read: false,
-          route: '',
+          user_name: '',
+          role_id: '',
+          mobile: '',
+          password: '123456',
         },
         rules: {
-            name: [{
+            user_name: [{
                 required: true,
-                message: '请输入路由名称',
+                message: '请输入管理员名称',
                 trigger: 'blur'
             }],
-            method: [{
+            role_id: [{
                 required: true,
-                message: '请输入请求方法',
+                message: '请选择角色',
                 trigger: 'blur'
             }],
-            route: [{
+            mobile: [{
                 required: true,
-                message: '请输入地址',
+                message: '请输入手机号',
+                trigger: 'blur'
+            }],
+            password: [{
+                required: true,
+                message: '请输入密码',
                 trigger: 'blur'
             }],
 
         },
       }
     },
+    created() {
+        this.getRole();
+    },
     methods: {
+        async getRole()
+        {
+            let res = await all();
+            if(res.code === error.SUCCESS_CODE) {
+                this.options = res.data
+            }
+        },
       onSubmit(formName) {
           console.log(formName);
           this.$refs[formName].validate((valid) => {

@@ -23,3 +23,11 @@ export function del(query) {
     data: query
   })
 }
+
+export function all(query) {
+  return request({
+    url: 'route/all',
+    method: 'get',
+    data: query
+  })
+}

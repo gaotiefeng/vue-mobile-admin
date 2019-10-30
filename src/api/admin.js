@@ -15,3 +15,11 @@ export function del(query) {
     data: query
   })
 }
+
+export function add(query) {
+  return request({
+    url: 'admin/add',
+    method: 'post',
+    data: query
+  })
+}
