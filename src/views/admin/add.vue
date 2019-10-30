@@ -103,7 +103,7 @@ export default({
           let result = await add(this.form)
           if(result.code === error.SUCCESS_CODE) {
               this.$router.push({
-                    path: '/route/index'
+                    path: '/admin/index'
                 })
 
           }

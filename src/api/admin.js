@@ -18,7 +18,7 @@ export function del(query) {
 
 export function add(query) {
   return request({
-    url: 'admin/add',
+    url: 'admin/save',
     method: 'post',
     data: query
   })
