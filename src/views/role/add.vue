@@ -7,8 +7,8 @@
         <el-input v-model="form.name" placeholder="列如：管理组"></el-input>
     </el-form-item>
 
-    <el-form-item label="路由名称" prop="router_id">
-        <el-select v-model="form.router_id" placeholder="请选择">
+    <el-form-item label="路由名称" prop="route_id">
+        <el-select v-model="form.route_id" placeholder="请选择">
             <el-option
             v-for="item in options"
             :key="item.id"
@@ -36,7 +36,7 @@ export default({
         options: [],
         form: {
           name: '',
-          router_id: '',
+          route_id: '',
         },
         rules: {
             name: [{
@@ -44,7 +44,7 @@ export default({
                 message: '请输入角色名称',
                 trigger: 'blur'
             }],
-            router_id: [{
+            route_id: [{
                 required: true,
                 message: '请选择路由',
                 trigger: 'blur'
@@ -81,7 +81,7 @@ export default({
           let result = await add(this.form)
           if(result.code === error.SUCCESS_CODE) {
               this.$router.push({
-                    path: '/route/index'
+                    path: '/role/index'
                 })
 
           }
